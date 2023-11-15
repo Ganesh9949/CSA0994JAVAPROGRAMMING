@@ -1,0 +1,48 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MinMaxSum {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the value of N
+        System.out.print("Enter the value of N: ");
+        int N = scanner.nextInt();
+
+        // Input N space-separated integers
+        long[] arr = new long[N];
+        System.out.println("Enter " + N + " space-separated integer values:");
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextLong();
+        }
+
+        // Calculate minimum and maximum sums
+        calculateMinMaxSum(arr);
+
+        scanner.close();
+    }
+
+    private static void calculateMinMaxSum(long[] arr) {
+        int n = arr.length;
+
+        // Sort the array
+        Arrays.sort(arr);
+
+        // Calculate the minimum sum (sum of N-1 smallest elements)
+        long minSum = 0;
+        for (int i = 0; i < n - 1; i++) {
+            minSum += arr[i];
+        }
+
+        // Calculate the maximum sum (sum of N-1 largest elements)
+        long maxSum = 0;
+        for (int i = 1; i < n; i++) {
+            maxSum += arr[i];
+        }
+
+        // Print the results
+        System.out.println("Minimum Sum: " + minSum);
+        System.out.println("Maximum Sum: " + maxSum);
+    }
+}
