@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class SubsequenceSum {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the length of the array
+        System.out.print("Enter the length of the array: ");
+        int N = scanner.nextInt();
+
+        // Input the array elements
+        int[] arr = new int[N];
+        System.out.println("Enter the array elements:");
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // Calculate the sum of the product of every consecutive pair of elements
+        long result = calculateSubsequenceSum(arr);
+
+        // Print the result
+        System.out.println("Sum of product of every consecutive pair of elements: " + result);
+
+        scanner.close();
+    }
+
+    private static long calculateSubsequenceSum(int[] arr) {
+        int N = arr.length;
+        long result = 0;
+
+        for (int i = 0; i < N - 1; i++) {
+            for (int j = i + 1; j < N; j++) {
+                // Multiply every consecutive pair of elements and add to the result
+                result += arr[i] * arr[j];
+            }
+        }
+
+        return result;
+    }
+}
